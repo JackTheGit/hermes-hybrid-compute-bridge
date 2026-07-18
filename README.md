@@ -33,6 +33,7 @@ For machines running Apple Silicon (M1/M2/M3/M4) with a Unified Memory Pool:
 
 1. Create a dedicated project directory anywhere in your standard user folder:
 ```bash
+
 mkdir -p ~/Developer/hermes-bridge
 cd ~/Developer/hermes-bridge
 ```
@@ -41,6 +42,7 @@ cd ~/Developer/hermes-bridge
 
 3. Launch the containerized engine:
 ```bash
+
 docker compose up -d
 ```
 
@@ -52,6 +54,7 @@ docker compose up -d
 
 1. On your remote VPS hosting the Hermes Agent, ensure litellm is installed:
 ```bash
+
 pip install litellm
 ```
 
@@ -61,6 +64,7 @@ pip install litellm
 
 4. Boot the proxy gateway on the VPS:
 ```bash
+
 litellm --config ./litellm-router.yaml --port 4000
 ```
 
@@ -71,6 +75,7 @@ litellm --config ./litellm-router.yaml --port 4000
 Point your active Hermes Agent environment variables on the VPS to the local proxy gateway instead of raw third-party endpoints:
 
 ```bash
+
 export ANTHROPIC_API_KEY="sk-vps-secure-key"
 export ANTHROPIC_BASE_URL="http://localhost:4000"
 ```
@@ -84,11 +89,13 @@ Your agent will now execute exactly as before, but your monthly API bill will dr
 To guarantee that your remote VPS can seamlessly communicate with the containerized compute engine on your local Mac through your secure network tunnel, execute the automated diagnostic script:
 
 ```bash
+
 chmod +x ./vps-config/verify-bridge.sh
 ./vps-config/verify-bridge.sh
 ```
 
 The script will instantly test the availability of the local LiteLLM proxy and verify the end-to-end data link to your local hardware.
+
 
 ---
 
