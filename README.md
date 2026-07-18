@@ -1,5 +1,7 @@
 # ☤ Hermes Hybrid Compute Bridge
 
+![Hermes](https://img.shields.io/badge/Hermes-Compatible-orange) ![Compute](https://img.shields.io/badge/Infrastructure-Hybrid-blueviolet) ![License](https://img.shields.io/badge/License-MIT-green) ![Platform](https://img.shields.io/badge/Apple--Silicon-M1%2FM2%2FM3%2FM4-blue)
+
 A secure, production-grade blueprint to slash your daily AI API spend by up to 80%. This repository layout allows developers to isolate their Hermes Agent on a remote VPS while routing routine, high-frequency tasks (formatting, summaries, basic code tasks) to a zero-marginal-cost local Apple Silicon Mac container, reserving premium cloud models exclusively for frontier-level reasoning.
 
                   ┌──────────────────────┐
