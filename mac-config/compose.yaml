@@ -1,0 +1,21 @@
+services:
+  ollama-engine:
+    image: ollama/ollama:latest
+    container_name: hermes-local-compute
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_storage:/root/.ollama
+    environment:
+      - OLLAMA_METAL=1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: apple
+              count: all
+
+volumes:
+  ollama_storage:
+    name: hermes_ollama_data
