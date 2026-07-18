@@ -62,22 +62,23 @@ docker compose up -d
 
 ---
 
-## ☁️ 2. Remote VPS Setup (The Intelligent Router)
+## ☁️ 2. Remote VPS Setup (The Custom Router)
 
-1. On your remote VPS hosting the Hermes Agent, ensure litellm is installed:
+1. On your remote VPS hosting the Hermes Agent, install the required lightweight dependencies:
 ```bash
-
-pip install litellm
+pip install fastapi uvicorn httpx
 ```
 
-2. Deploy the litellm-router.yaml configuration from this repo's vps-config/ directory onto your server.
+2. Deploy the `simple-router.py` configuration from this repo's `vps-config/` directory onto your server.
 
-3. Replace YOUR_MAC_IP_ADDRESS in the configuration file with your Mac's secure network identifier (we highly recommend using an encrypted overlay network like Tailscale or WireGuard to bridge the VPS and Mac without exposing public ports).
+3. Establish a secure connection from your local Mac using an SSH Remote Reverse Tunnel to map your local engine straight to the VPS loopback interface (no complex overlay networks or public port exposures required):
+```bash
+ssh -R 11434:localhost:11434 hermes@YOUR_VPS_IP
+```
 
 4. Boot the proxy gateway on the VPS:
 ```bash
-
-litellm --config ./litellm-router.yaml --port 4000
+python3 ./vps-config/simple-router.py
 ```
 
 ---
