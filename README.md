@@ -63,4 +63,9 @@ Point your active Hermes Agent environment variables on the VPS to the local pro
 export ANTHROPIC_API_KEY="sk-vps-secure-key"
 export ANTHROPIC_BASE_URL="http://localhost:4000"
 
-Your agent will now execute exactly as before—but your monthly API bill will drop drastically as everyday background micro-tasks shift entirely to your local desk.
+Your agent will now execute exactly as before, but your monthly API bill will drop drastically as everyday background micro-tasks shift entirely to your local desk.
+
+---
+
+## 📊 Benchmarks & Telemetry Math
+Want to see the raw hardware data and cost breakdowns? Check out our complete [Performance Benchmarks Guide](./benchmarks.md).
