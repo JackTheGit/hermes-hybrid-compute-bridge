@@ -1,0 +1,22 @@
+model_list:
+  # Route routine coding/formatting tasks to the user's local Mac engine
+  - model_name: claude-sonnet-4-6
+    litellm_params:
+      model: ollama/qwen2.5-coder:14b
+      api_base: http://YOUR_MAC_IP_ADDRESS:11434
+  
+  # Route basic utility tasks to a fast local model on their Mac
+  - model_name: claude-haiku-4-5-20251001
+    litellm_params:
+      model: ollama/phi4-mini
+      api_base: http://YOUR_MAC_IP_ADDRESS:11434
+
+  # Keep ultra-complex reasoning bound securely to the real cloud API on the VPS
+  - model_name: claude-opus-4-7
+    litellm_params:
+      model: anthropic/claude-opus-4-7
+      api_key: "os.environ/ANTHROPIC_API_KEY"
+
+general_settings:
+  master_key: sk-vps-secure-key
+  port: 4000
