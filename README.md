@@ -107,7 +107,7 @@ chmod +x ./vps-config/verify-bridge.sh
 ./vps-config/verify-bridge.sh
 ```
 
-The script will instantly test the availability of the local LiteLLM proxy and verify the end-to-end data link to your local hardware.
+The script will instantly test the availability of the custom FastAPI proxy router and verify the end-to-end data link to your local hardware.
 
 
 ---
