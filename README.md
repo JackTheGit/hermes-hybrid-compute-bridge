@@ -79,5 +79,18 @@ Your agent will now execute exactly as before, but your monthly API bill will dr
 
 ---
 
+## ⚡ 4. Verification & Diagnostics
+
+To guarantee that your remote VPS can seamlessly communicate with the containerized compute engine on your local Mac through your secure network tunnel, execute the automated diagnostic script:
+
+```bash
+chmod +x ./vps-config/verify-bridge.sh
+./vps-config/verify-bridge.sh
+```
+
+The script will instantly test the availability of the local LiteLLM proxy and verify the end-to-end data link to your local hardware.
+
+---
+
 ## 📊 Benchmarks & Telemetry Math
 Want to see the raw hardware data and cost breakdowns? Check out our complete [Performance Benchmarks Guide](./benchmarks.md).
