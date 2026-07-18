@@ -1,23 +1,24 @@
 #!/bin/bash
-echo "Testing connection to local proxy router gateway..."
 
-# 1. Check if LiteLLM proxy is listening locally on the VPS
-if curl -s http://localhost:4000/v1/models > /dev/null; then
-    echo "✔ Success: LiteLLM proxy is running on port 4000."
+echo "Checking LLM Bridge Connection..."
+echo "---------------------------------"
+
+# Test the router proxy using native Ollama format
+RESPONSE=$(curl -s -X POST http://localhost:4000/api/generate \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "phi4-mini",
+    "prompt": "Respond with the word PASS.",
+    "stream": false
+  }')
+
+echo "Raw Response from Proxy:"
+echo "$RESPONSE"
+echo "---------------------------------"
+
+if [[ $RESPONSE == *"PASS"* ]]; then
+  echo "✅ SUCCESS: The bridge is working perfectly end-to-end!"
 else
-    echo "✖ Error: Cannot reach LiteLLM proxy on port 4000. Verify the service is active."
-    exit 1
+  echo "❌ ERROR: Verification failed. Check simple-router.py terminal log."
+  exit 1
 fi
-
-# 2. Check if the local Mac engine endpoint responds through the tunnel
-echo "Testing link to local hardware compute engine..."
-RESPONSE=$(curl -s -w "%{http_code}" -o /dev/null http://localhost:4000/v1/models)
-
-if [ "$RESPONSE" -eq 200 ]; then
-    echo "✔ Success: Local Apple Silicon compute engine is answering requests correctly."
-else
-    echo "✖ Error: Gateway returned status $RESPONSE. Verify your Mac IP/tunnel configuration."
-    exit 1
-fi
-
-echo "Bridge is working perfectly! Secure offloading active."
