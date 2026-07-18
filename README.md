@@ -27,6 +27,18 @@ A secure, production-grade blueprint to slash your daily AI API spend by up to 8
 
 ---
 
+## 📋 Hardware Prerequisites & Model Targets
+
+Select your local model allocation based on your Mac's Unified Memory pool to ensure smooth parallel execution alongside your daily tasks:
+
+| Hardware Tier | Available Unified Memory | Optimal Local Model Targets |
+| :--- | :--- | :--- |
+| **Base M-Series** | 8GB – 16GB | Lightweight 4B/8B models (e.g., Phi-4 Mini, Llama 3.2 8B) |
+| **M-Series Pro / Max** | 32GB – 64GB | Dense 12B/14B utility models (e.g., Gemma 3 12B, Qwen 2.5 Coder 14B) |
+| **M-Series Ultra** | 64GB – 128GB+ | Full-scale 70B frontier models (e.g., Llama 3.3 70B) |
+
+---
+
 ## 💻 1. Local Mac Setup (The Compute Engine)
 
 For machines running Apple Silicon (M1/M2/M3/M4) with a Unified Memory Pool:
